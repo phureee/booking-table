@@ -44,5 +44,5 @@ func InitTable(c echo.Context) error {
 }
 
 func GetTable(c echo.Context) error {
-	return response.Success(c, 200, entities.GetTable())
+	return response.Success(c, 200, entities.ShowTable())
 }

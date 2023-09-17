@@ -22,7 +22,6 @@ type bookRespone struct {
 func BookingTable(c echo.Context) error {
 	var bookReq bookRequest
 
-	fmt.Println("comin book")
 	if err := c.Bind(&bookReq); err != nil {
 		fmt.Println("Bind err", err.Error())
 		return err
@@ -72,5 +71,5 @@ func BookingTable(c echo.Context) error {
 }
 
 func GetBook(c echo.Context) error {
-	return c.JSON(200, entities.GetBook())
+	return response.Success(c, 200, entities.ShowBook())
 }

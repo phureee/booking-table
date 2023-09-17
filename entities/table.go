@@ -1,6 +1,7 @@
 package entities
 
 import (
+	"sort"
 	"time"
 )
 
@@ -35,4 +36,29 @@ func UpdateTableAvailable(tableID int, isAvailable bool) (IsSuccess bool) {
 		return true
 	}
 	return false
+}
+
+type showTable struct {
+	TableID      int       `json:"table_id"`
+	SeaterAmount int       `json:"seater_amount"`
+	IsAvailable  bool      `json:"available"`
+	CreatedAt    time.Time `json:"create_time"`
+}
+
+func ShowTable() []showTable {
+	var showT []showTable
+	for tID, t := range tables {
+		showT = append(showT, showTable{
+			TableID:      tID,
+			SeaterAmount: t.SeaterAmount,
+			IsAvailable:  t.IsAvailable,
+			CreatedAt:    t.CreatedAt,
+		})
+	}
+
+	sort.Slice(showT, func(i, j int) bool {
+		return showT[i].TableID < showT[j].TableID
+	})
+
+	return showT
 }
