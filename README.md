@@ -6,6 +6,12 @@ It's a simple application. To reserve a table in a restaurant. Uses RESTful API 
 go run main.go
 ```
 
+## how to run on container
+```
+docker-compose up --build
+```
+
+
 
 ## API Init table
 
