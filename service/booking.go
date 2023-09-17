@@ -28,7 +28,7 @@ func BookingTable(c echo.Context) error {
 	}
 
 	if bookReq.CustomerAmount <= 0 {
-		return response.Fail(c, 400, "customer amount should more than 0")
+		return response.Fail(c, 400, "Field 'customer_amount' is require or should more than 0")
 	}
 
 	amountCust := bookReq.CustomerAmount
